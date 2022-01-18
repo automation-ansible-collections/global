@@ -1,0 +1,67 @@
+---
+# tasks file for tower_ldap_settings
+- include_vars:
+    file: "{{ item }}"
+  loop:
+    - "{{ dir_orgs_vars }}/configure_tower_general.yml"
+    - "{{ dir_orgs_vars }}/configure_tower_credentials.yml"
+    - "{{ dir_orgs_vars }}/{{ orgs }}/configure_tower_local_users.yml"
+  when: orgs is defined and dir_orgs_vars is defined
+
+- block:
+  - name: Get the current tower users
+    ansible.controller.tower_export:
+      tower_username: "{{ configure_tower_username }}"
+      tower_password: "{{ configure_tower_password }}"
+      tower_host: "{{ configure_tower_server_url }}"
+      validate_certs: "{{ configure_tower_validate_certs }}"
+      users: 'all'
+    register: current_users
+
+  - name: Show the currently existing users
+    debug:
+      var: current_users
+
+  - name: Show the users not in IaC
+    debug:
+      msg:
+        - "{{ user_item.username if user_item.username not in (configure_tower_local_users | map(attribute='username') | list) }}"
+    when: (user_item.username if user_item.username not in (configure_tower_local_users | map(attribute='username') | list))
+    loop: "{{ current_users.assets.users }}"
+    loop_control:
+      loop_var: user_item
+
+  - name: Remove the users not in IaC
+    ansible.controller.tower_user:
+      tower_username: "{{ configure_tower_username }}"
+      tower_password: "{{ configure_tower_password }}"
+      tower_host: "{{ configure_tower_server_url }}"
+      validate_certs: "{{ configure_tower_validate_certs }}"
+      username: "{{ remove_user_item.username }}"
+      state: absent
+    when: (remove_user_item.username if remove_user_item.username not in (configure_tower_local_users | map(attribute='username') | list))
+    loop: "{{ current_users.assets.users }}"
+    loop_control:
+      loop_var: remove_user_item
+  when:
+    - desired_state is defined
+    - desired_state | bool
+
+- name: Configure Tower local users
+  ansible.controller.tower_user:
+    tower_username: "{{ configure_tower_username }}"
+    tower_password: "{{ configure_tower_password }}"
+    tower_host: "{{ configure_tower_server_url }}"
+    validate_certs: "{{ configure_tower_validate_certs }}"
+    username: "{{ item.username }}"
+    password: "{{ item.password  }}"
+    email: "{{ item.email | default (omit) }}"
+    first_name: "{{ item.first_name | default (omit)}}"
+    last_name: "{{item.last_name | default (omit) }}"
+    state: "{{ item.state | default('present') }}"
+    auditor: "{{ item.auditor | default('false')}}"
+    superuser: "{{ item.superuser | default('false')}}"
+  loop: "{{ configure_tower_local_users }}"
+  when: configure_tower_local_users is defined
+  no_log: True
+  delegate_to: "{{ 'localhost' if tower_local else omit }}"

@@ -1,0 +1,6 @@
+---
+configure_tower_username: "{{ vault_tower_username | default ('admin')}}"
+configure_tower_password: "{{ vault_tower_password | default ('admin') }}"
+configure_tower_server_url: aapstdalone.bcnconsulting.com
+configure_tower_validate_certs: false
+tower_local: true

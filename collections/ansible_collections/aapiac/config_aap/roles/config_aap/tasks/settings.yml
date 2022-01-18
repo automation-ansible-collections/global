@@ -1,0 +1,42 @@
+---
+# tasks file for tower_settings
+#- include_vars:
+#    file: "{{ item }}"
+#  loop:
+#    - "{{ dir_orgs_vars }}/configure_tower_general.yml"
+#    - "{{ dir_orgs_vars }}/configure_tower_credentials.yml"
+#    - "{{ dir_orgs_vars }}/configure_tower_settings.yml"
+#  when: orgs is defined and dir_orgs_vars is defined
+
+- block:
+  - include_vars:
+      file: "{{ item }}"
+    loop:
+      - "{{ dir_orgs_vars }}/configure_tower_credentials.yml"
+      - "{{ dir_orgs_vars }}/configure_tower_general.yml"
+
+  - name: "Populate Setting variable files list"
+    set_fact:
+      tower_setting_files_list: "{{ tower_setting_files_list | default([]) + [item] }}"
+    loop: "{{ lookup('fileglob', '{{ dir_orgs_vars }}/tower_settings/*', wantlist=True) }}"
+
+  - name:
+    set_fact:
+      configure_tower_settings: "{{ (configure_tower_settings | default([])) + (lookup('file', item, recursive=True)| from_yaml) }}"
+    loop: "{{ tower_setting_files_list }}"
+  when: dir_orgs_vars is defined
+
+- name: Configure Tower Setttings
+  ansible.controller.tower_settings:
+    tower_username: "{{ configure_tower_username }}"
+    tower_password: "{{ configure_tower_password }}"
+    tower_host: "{{ configure_tower_server_url }}"
+    validate_certs: "{{ configure_tower_validate_certs }}"
+    name: "{{ item.name | default(omit) }}"
+    value: "{{ item.value | default (omit) }}"
+    settings: "{{ item.settings | default(omit) }}"
+  loop: "{{ configure_tower_settings }}"
+  when: configure_tower_settings is defined
+  #no_log: True
+  delegate_to: "{{ 'localhost' if tower_local else omit }}"
+...

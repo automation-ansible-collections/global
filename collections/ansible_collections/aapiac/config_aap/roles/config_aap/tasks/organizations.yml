@@ -1,0 +1,62 @@
+---
+- include_vars:
+    file: "{{ item }}"
+  loop:
+    - "{{ dir_orgs_vars }}/configure_tower_credentials.yml"
+    - "{{ dir_orgs_vars }}/configure_tower_general.yml"
+    - "{{ dir_orgs_vars }}/configure_tower_organizations.yml"
+  when: dir_orgs_vars is defined
+
+- block:
+  - name: Get the current tower organizations
+    ansible.controller.tower_export:
+      tower_username: "{{ configure_tower_username }}"
+      tower_password: "{{ configure_tower_password }}"
+      tower_host: "{{ configure_tower_server_url }}"
+      validate_certs: "{{ configure_tower_validate_certs }}"
+      organizations: 'all'
+    register: current_orgs
+
+  - name: Show the currently existing organizations
+    debug:
+      var: current_orgs
+
+  - name: Show the organizations not in IaC
+    debug:
+      msg:
+        - "{{ org_item.name if org_item.name not in (configure_tower_organizations | map(attribute='name') | list) }}"
+    when: (org_item.name if org_item.name not in (configure_tower_organizations | map(attribute='name') | list))
+    loop: "{{ current_orgs.assets.organizations }}"
+    loop_control:
+      loop_var: org_item
+
+  - name: Remove the organizations not in IaC
+    ansible.controller.tower_organization:
+      tower_username: "{{ configure_tower_username }}"
+      tower_password: "{{ configure_tower_password }}"
+      tower_host: "{{ configure_tower_server_url }}"
+      validate_certs: "{{ configure_tower_validate_certs }}"
+      name: "{{ remove_org_item.name }}"
+      description: "{{ remove_org_item.description }}"
+      state: absent
+    when: (remove_org_item.name if remove_org_item.name not in (configure_tower_organizations | map(attribute='name') | list))
+    loop: "{{ current_orgs.assets.organizations }}"
+    loop_control:
+      loop_var: remove_org_item
+  when:
+    - desired_state is defined
+    - desired_state | bool
+
+- name: Create tower organization
+  ansible.controller.tower_organization:
+    tower_username: "{{ configure_tower_username }}"
+    tower_password: "{{ configure_tower_password }}"
+    tower_host: "{{ configure_tower_server_url }}"
+    validate_certs: "{{ configure_tower_validate_certs }}"
+    name: "{{ item.name }}"
+    description: "{{ item.description }}"
+    state: "{{ item.state | default('present') }}"
+  loop: "{{ configure_tower_organizations }}"
+  when: configure_tower_organizations is defined
+  delegate_to: "{{ 'localhost' if tower_local else omit }}"
+...

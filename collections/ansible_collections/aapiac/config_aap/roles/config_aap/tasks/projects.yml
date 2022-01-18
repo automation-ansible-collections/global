@@ -1,0 +1,99 @@
+---
+# tasks file for tower_ldap_settings
+- include_vars:
+    file: "{{ item }}"
+  loop:
+    - "{{ dir_orgs_vars }}/configure_tower_credentials.yml"
+    - "{{ dir_orgs_vars }}/configure_tower_general.yml"
+    - "{{ dir_orgs_vars }}/{{ orgs }}/configure_tower_projects.yml"
+  when: orgs is defined and dir_orgs_vars is defined
+
+- block:
+  - name: Get the current tower projects
+    ansible.controller.tower_export:
+      tower_username: "{{ configure_tower_username }}"
+      tower_password: "{{ configure_tower_password }}"
+      tower_host: "{{ configure_tower_server_url }}"
+      validate_certs: "{{ configure_tower_validate_certs }}"
+      projects: 'all'
+    register: current_projects
+
+  - debug:
+      msg: "{{ item.name }} -> {{ item.organization.name | default('NO_ORGANIZATION') }}"
+    loop: "{{ current_projects.assets.projects }}"
+
+  - name: Map the currently existing information
+    set_fact:
+      current_info_for_projects: "{{ (current_info_for_projects | default([])) + [{ 'project': project_item.name, 'organization': (project_item.organization.name | default('NO_ORGANIZATION'))}] }}"
+    loop: "{{ current_projects.assets.projects }}"
+    loop_control:
+      loop_var: project_item
+    ignore_errors: true
+
+  - name: Show the currently existing projects associated with it's organizations
+    debug:
+      msg:
+        - "Current Info: {{ current_info_for_projects }}"
+        - "IaC projects: {{ configure_tower_projects }}"
+
+  - name: Show the projects not in IaC
+    debug:
+      msg:
+        - "Project name: {{ current_info_item_for_projects.project }}"
+        - "Project organization name: {{ current_info_item_for_projects.organization }}"
+    vars:
+      project_index: "{{ lookup('ansible.utils.index_of', data=configure_tower_projects, test='match', value='^'+current_info_item_for_projects.project+'$', key='name', fail_on_missing='true', wantlist=True) }}"
+      project_organization_index: "{{ lookup('ansible.utils.index_of', data=configure_tower_projects, test='match', value='^'+current_info_item_for_projects.organization+'$', key='organization', fail_on_missing='true', wantlist=True) }}"
+    loop: "{{ current_info_for_projects }}"
+    loop_control:
+      loop_var: current_info_item_for_projects
+    when:
+      - current_info_item_for_projects.organization is match('^'+orgs+'$')
+      - (project_organization_index | intersect(project_index)) == []
+
+  - name: Remove the projects not in IaC
+    ansible.controller.tower_project:
+      tower_username: "{{ configure_tower_username }}"
+      tower_password: "{{ configure_tower_password }}"
+      tower_host: "{{ configure_tower_server_url }}"
+      validate_certs: "{{ configure_tower_validate_certs }}"
+      name: "{{ remove_project_item.project }}"
+      organization: "{{ remove_project_item.organization }}"
+      state: absent
+    vars:
+      project_index: "{{ lookup('ansible.utils.index_of', data=configure_tower_projects, test='match', value='^'+remove_project_item.project+'$', key='name', fail_on_missing='true', wantlist=True) }}"
+      project_organization_index: "{{ lookup('ansible.utils.index_of', data=configure_tower_projects, test='match', value='^'+remove_project_item.organization+'$', key='organization', fail_on_missing='true', wantlist=True) }}"
+    loop: "{{ current_info_for_projects }}"
+    loop_control:
+      loop_var: remove_project_item
+    when:
+      - remove_project_item.organization is match('^'+orgs+'$')
+      - (project_organization_index | intersect(project_index)) == []
+
+  when:
+    - desired_state is defined
+    - desired_state | bool
+
+- name: Configure Tower Projects
+  ansible.controller.tower_project:
+    tower_username: "{{ configure_tower_username }}"
+    tower_password: "{{ configure_tower_password }}"
+    tower_host: "{{ configure_tower_server_url }}"
+    validate_certs: "{{ configure_tower_validate_certs }}"
+    name: "{{ item.name }}"
+    description: "{{ item.description | default (omit) }}"
+    scm_url: "{{ item.scm_url | default(omit) }}"
+    scm_type: "{{ item.scm_type | default('git') }}"
+    scm_clean: "{{ item.scm_clean | default('false') }}"
+    scm_branch: "{{ item.scm_branch | default(omit) }}"
+    scm_credential: "{{ item.scm_credential | default(omit) }}"
+    scm_delete_on_update: "{{ item.scm_delete_on_update | default('false') }}"
+    scm_update_on_launch: "{{ item.scm_update_on_launch | default('false') }}"
+    scm_update_cache_timeout: "{{ item.scm_update_cache_timeout | default('60')}}"
+    allow_override: "{{ item.allow_override | default(omit) }}"
+    custom_virtualenv: "{{ item.custom_virtualenv | default(omit)}}"
+    organization: "{{ item.organization | default(orgs) }}"
+    state: "{{ item.state | default('present') }}"
+  loop: "{{ configure_tower_projects }}"
+  when: configure_tower_projects is defined
+  delegate_to: "{{ 'localhost' if tower_local else omit }}"
