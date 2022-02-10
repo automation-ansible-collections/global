@@ -1,0 +1,83 @@
+---
+configure_controller_job_templates:
+  - name: "{{ orgs }} CasC_JobTemplates_AAP_CI_Webhook"
+    description: "Template to attend AAP CasC webhook"
+    organization: "{{ orgs }}"
+    project: "{{ orgs }} CasC_playbooks"
+    inventory: "{{ orgs }} Localhost"
+    playbook: "config-controller.yml"
+    job_tags: ci_webhook_trigger
+    job_type: run
+    fact_caching_enabled: false
+    credentials:
+      - "{{ orgs }} {{ env }} aap_credentials"
+    concurrent_jobs_enabled: true
+    ask_scm_branch_on_launch: true
+    extra_vars:
+      ansible_python_interpreter: /usr/bin/python3
+      ansible_async_dir: /home/runner/.ansible_async/
+    execution_environment: "ee-casc"
+
+  - name: "{{ orgs }} CasC_JobTemplates_AAP_CI_Config_Controller"
+    description: "Template to deploy AAP Orgs"
+    organization: "{{ orgs }}"
+    project: "{{ orgs }} CasC_playbooks"
+    inventory: "{{ orgs }} Localhost"
+    playbook: "config-controller.yml"
+    job_type: run
+    fact_caching_enabled: false
+    credentials:
+      - "{{ orgs }} {{ env }} aap_credentials"
+      - "{{ orgs }} {{ env }} aap_vault_credentials"
+    concurrent_jobs_enabled: true
+    ask_scm_branch_on_launch: true
+    ask_tags_on_launch: true
+    ask_verbosity_on_launch: true
+    ask_variables_on_launch: true
+    extra_vars:
+      ansible_python_interpreter: /usr/bin/python3
+      ansible_async_dir: /home/runner/.ansible_async/
+    execution_environment: "ee-casc"
+
+  - name: "{{ orgs }} JT_Container_Group"
+    description: "Template to  test Container Groups"
+    organization: "{{ orgs }}"
+    project: "{{ orgs }} Container_Group"
+    inventory: "{{ orgs }} Localhost"
+    playbook: "helloworld.yml"
+    job_type: run
+    concurrent_jobs_enabled: true
+    credentials:
+      - "{{ orgs }} {{ env }} aap_vault_credentials"
+    execution_environment: "Default execution environment"
+    instance_groups:
+      - Container_Groups_Instance
+
+  - name: "{{ orgs }} JT_Container_Group TEST DEMO First Push"
+    description: "Template to  test Container Groups"
+    organization: "{{ orgs }}"
+    project: "{{ orgs }} Container_Group"
+    inventory: "{{ orgs }} Localhost"
+    playbook: "helloworld.yml"
+    job_type: run
+    concurrent_jobs_enabled: true
+    credentials:
+      - "{{ orgs }} {{ env }} aap_vault_credentials"
+    execution_environment: "Default execution environment"
+    instance_groups:
+      - Container_Groups_Instance
+#
+#  - name: "{{ orgs }} JT_Container_Group TEST DEMO - Second Push"
+#    description: "Template to  test Container Groups"
+#    organization: "{{ orgs }}"
+#    project: "{{ orgs }} Container_Group"
+#    inventory: "{{ orgs }} Localhost"
+#    playbook: "helloworld.yml"
+#    job_type: run
+#    concurrent_jobs_enabled: true
+#    credentials:
+#      - "{{ orgs }} {{ env }} aap_vault_credentials"
+#    execution_environment: "Default execution environment"
+#    instance_groups:
+#      - Container_Groups_Instance
+...

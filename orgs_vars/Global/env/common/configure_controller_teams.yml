@@ -1,0 +1,26 @@
+---
+configure_controller_teams:
+  - name: "{{ orgs }} Global-team"
+    description: "Team for Global Org"
+    organization: "Global"
+
+  - name: "Organization1 admins-team"
+    description: "Team for Admin Organization1 Org"
+    organization: "Organization1"
+
+  - name: "Organization1 users-team"
+    description: "Team for Normal Organization1 Org"
+    organization: "Organization1"
+
+  - name: "Organization2 admins-team"
+    description: "Team for Admin Organization2 Org"
+    organization: "Organization2"
+
+  - name: "Organization2 users-team"
+    description: "Team for Normal Organization2 Org"
+    organization: "Organization2"
+
+  - name: "{{ orgs }} test-group"
+    description: "test-group"
+    organization: "Global"
+...

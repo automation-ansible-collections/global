@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  collections:
+    - casc.aap_controller
+  roles:
+    - role: config_controller

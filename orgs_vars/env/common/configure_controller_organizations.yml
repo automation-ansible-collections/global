@@ -1,0 +1,17 @@
+configure_controller_organizations:
+  - name: "Global"
+    description: "Organization for globally available objects"
+    galaxy_credentials: "{{ common_galaxy_credentials }}"
+  - name: "Organization1"
+    description: "Organization 1 for tests"
+    galaxy_credentials: "{{ common_galaxy_credentials }}"
+  - name: "Organization2"
+    description: "Organization 2 for tests"
+    galaxy_credentials: "{{ common_galaxy_credentials }}"
+
+common_galaxy_credentials:
+  - "Ansible Galaxy"
+  - "{{ orgs }} {{ env }} Automation Hub Community Repository"
+  - "{{ orgs }} {{ env }} Automation Hub Published Repository"
+  - "{{ orgs }} {{ env }} Automation Hub RH Certified Repository"
+...

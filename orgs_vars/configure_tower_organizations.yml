@@ -1,8 +1,0 @@
-configure_tower_organizations:
-  - name: "Global"
-    description: "Organization for globally available objects"
-  - name: "Organization1"
-    description: "Organization 1 for tests"
-  - name: "Organization2"
-    description: "Organization 2 for tests"
-...

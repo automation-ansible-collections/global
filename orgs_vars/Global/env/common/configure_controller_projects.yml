@@ -1,0 +1,34 @@
+---
+configure_controller_projects:
+  - name: "{{ orgs }} CasC_playbooks"
+    description: "Project to run CasC"
+    organization: "{{ orgs }}"
+    scm_type: git
+    scm_url: "git@gitlab.bcnconsulting.com:aap-demo/global.git"
+    scm_credential: "{{ orgs }} {{ env }} Gitlab Credential"
+    scm_branch: "{{ env }}"
+    scm_clean: false
+    scm_delete_on_update: false
+    scm_update_on_launch: false
+    scm_update_cache_timeout: 86400
+    allow_override: true
+
+  - name: "{{ orgs }} InventorySource XLSX"
+    description: "InventorySource XLSX"
+    organization: "{{ orgs }}"
+    scm_type: git
+    scm_url: "git@gitlab.bcnconsulting.com:aap-demo/inventario_ansible_xlsx.git"
+    scm_credential: "{{ orgs }} {{ env }} Gitlab Credential"
+    scm_clean: false
+    scm_delete_on_update: false
+    scm_update_on_launch: false
+    scm_update_cache_timeout: 86400
+    allow_override: true
+
+  - name: "{{ orgs }} Container_Group"
+    description: "Project to run Container_Groups example"
+    organization: "{{ orgs }}"
+    scm_type: "manual"
+    local_path: "helloworld"
+
+...

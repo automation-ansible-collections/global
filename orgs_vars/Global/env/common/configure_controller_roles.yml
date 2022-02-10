@@ -1,0 +1,82 @@
+---
+## available roles: admin_role, execute_role, project_admin_role, inventory_admin_role, credential_admin_role, workflow_admin_role, notification_admin_role, job_template_admin_role, execution_environment_admin_role, auditor_role, member_role, read_role, approval_role
+configure_controller_roles:
+  - team: "Organization1 admins-team"
+    organizations:
+      - "Organization1"
+    roles:
+      - project_admin
+      - inventory_admin
+      - credential_admin
+      - workflow_admin
+      - notification_admin
+      - job_template_admin
+
+  - team: "Organization2 admins-team"
+    organizations:
+      - "Organization2"
+    roles:
+      - project_admin
+      - inventory_admin
+      - credential_admin
+      - workflow_admin
+      - notification_admin
+      - job_template_admin
+
+  - user: "adminorg1"
+    organizations:
+      - "Organization1"
+    roles:
+      - "member"
+
+  - user: "adminorg1"
+    organizations:
+      - "Organization1"
+    roles:
+      - "admin"
+    target_teams:
+      - "Organization1 admins-team"
+
+  - user: "adminorg2"
+    organizations:
+      - "Organization2"
+    roles:
+      - "member"
+
+  - user: "adminorg2"
+    organizations:
+      - "Organization2"
+    roles:
+      - "admin"
+    target_teams:
+      - "Organization2 admins-team"
+
+  - user: "userorg1"
+    organizations:
+      - "Organization1"
+    roles:
+      - "member"
+
+  - user: "userorg1"
+    organizations:
+      - "Organization1"
+    roles:
+      - "member"
+    target_teams:
+      - "Organization1 users-team"
+
+  - user: "userorg2"
+    organizations:
+      - "Organization2"
+    roles:
+      - "member"
+
+  - user: "userorg2"
+    organizations:
+      - "Organization2"
+    roles:
+      - "member"
+    target_teams:
+      - "Organization2 users-team"
+
+...
