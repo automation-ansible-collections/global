@@ -1,5 +1,5 @@
 ---
-configure_controller_local_users:
+controller_user_accounts:
 - username: "admin"
   password: !vault |
           $ANSIBLE_VAULT;1.1;AES256
