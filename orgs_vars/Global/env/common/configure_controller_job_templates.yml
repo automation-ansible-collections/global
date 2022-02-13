@@ -50,11 +50,12 @@ controller_templates:
       - "OrgReadOnly {{ env }} machine_ansible_user_credentials"
     concurrent_jobs_enabled: true
     ask_inventory_on_launch: true
+    ask_credential_on_launch: true
+    ask_limit_on_launch: true
+    ask_verbosity_on_launch: true
     #ask_scm_branch_on_launch: true
     #ask_tags_on_launch: true
     #ask_variables_on_launch: true
-    ask_limit_on_launch: true
-    ask_verbosity_on_launch: true
     extra_vars:
       ansible_python_interpreter: /usr/bin/python3
       ansible_async_dir: /home/runner/.ansible_async/

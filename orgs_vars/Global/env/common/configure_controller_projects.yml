@@ -30,6 +30,7 @@ controller_projects:
     organization: "{{ orgs }}"
     scm_type: "manual"
     local_path: "helloworld"
+    update: false
 
   - name: "OrgReadOnly ReadOnly_Playbooks"
     description: "Playbooks to performe not intrusive actions"
@@ -42,3 +43,4 @@ controller_projects:
     scm_update_on_launch: false
     scm_update_cache_timeout: 86400
     allow_override: true
+...
