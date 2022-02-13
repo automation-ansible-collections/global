@@ -1,5 +1,5 @@
 ---
-configure_controller_teams:
+controller_teams:
   - name: "{{ orgs }} Global-team"
     description: "Team for Global Org"
     organization: "Global"
