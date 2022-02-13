@@ -3,10 +3,13 @@ controller_organizations:
     description: "Organization for globally available objects"
     galaxy_credentials: "{{ common_galaxy_credentials }}"
   - name: "Organization1"
-    description: "Organization 1 for tests"
+    description: "Organization 1 to tests"
     galaxy_credentials: "{{ common_galaxy_credentials }}"
   - name: "Organization2"
-    description: "Organization 2 for tests"
+    description: "Organization 2 to tests"
+    galaxy_credentials: "{{ common_galaxy_credentials }}"
+  - name: "OrgReadOnly"
+    description: "Organization to run playbooks to get info"
     galaxy_credentials: "{{ common_galaxy_credentials }}"
 
 common_galaxy_credentials:

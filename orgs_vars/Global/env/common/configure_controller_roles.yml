@@ -88,4 +88,23 @@ controller_roles:
     target_teams:
       - "Organization2 users-team"
 
+  - team: "team-all-ts-readonly"
+    job_templates:
+      - "OrgReadOnly JT_ReadOnly_Playbooks"
+    roles:
+      - "execute"
+
+  - team: "team-ts01"
+    inventories:
+      - "SmartInventory CPD BCN Org1"
+      - "SmartInventory CPD MAD Org1"
+    roles:
+      - "use"
+
+  - team: "team-ts02"
+    inventories:
+      - "SmartInventory CPD BCN Org2"
+      - "SmartInventory CPD MAD Org2"
+    roles:
+      - "use"
 ...

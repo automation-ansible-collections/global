@@ -1,5 +1,5 @@
 ---
-configure_controller_job_templates:
+controller_templates:
   - name: "{{ orgs }} CasC_JobTemplates_AAP_CI_Webhook"
     description: "Template to attend AAP CasC webhook"
     organization: "{{ orgs }}"
@@ -39,6 +39,27 @@ configure_controller_job_templates:
       ansible_async_dir: /home/runner/.ansible_async/
     execution_environment: "ee-casc"
 
+  - name: "OrgReadOnly JT_ReadOnly_Playbooks"
+    description: "Template to execute readonly playbooks"
+    organization: "OrgReadOnly"
+    project: "OrgReadOnly ReadOnly_Playbooks"
+    playbook: "readonly-playbooks.yml"
+    job_type: run
+    fact_caching_enabled: false
+    credentials:
+      - "OrgReadOnly {{ env }} machine_ansible_user_credentials"
+    concurrent_jobs_enabled: true
+    ask_inventory_on_launch: true
+    #ask_scm_branch_on_launch: true
+    #ask_tags_on_launch: true
+    #ask_variables_on_launch: true
+    ask_limit_on_launch: true
+    ask_verbosity_on_launch: true
+    extra_vars:
+      ansible_python_interpreter: /usr/bin/python3
+      ansible_async_dir: /home/runner/.ansible_async/
+    execution_environment: "ee-casc"
+
   - name: "{{ orgs }} JT_Container_Group"
     description: "Template to  test Container Groups"
     organization: "{{ orgs }}"
@@ -53,19 +74,19 @@ configure_controller_job_templates:
     instance_groups:
       - Container_Groups_Instance
 
-  - name: "{{ orgs }} JT_Container_Group TEST DEMO First Push"
-    description: "Template to  test Container Groups"
-    organization: "{{ orgs }}"
-    project: "{{ orgs }} Container_Group"
-    inventory: "{{ orgs }} Localhost"
-    playbook: "helloworld.yml"
-    job_type: run
-    concurrent_jobs_enabled: true
-    credentials:
-      - "{{ orgs }} {{ env }} aap_vault_credentials"
-    execution_environment: "Default execution environment"
-    instance_groups:
-      - Container_Groups_Instance
+#  - name: "{{ orgs }} JT_Container_Group TEST DEMO First Push"
+#    description: "Template to  test Container Groups"
+#    organization: "{{ orgs }}"
+#    project: "{{ orgs }} Container_Group"
+#    inventory: "{{ orgs }} Localhost"
+#    playbook: "helloworld.yml"
+#    job_type: run
+#    concurrent_jobs_enabled: true
+#    credentials:
+#      - "{{ orgs }} {{ env }} aap_vault_credentials"
+#    execution_environment: "Default execution environment"
+#    instance_groups:
+#      - Container_Groups_Instance
 #
 #  - name: "{{ orgs }} JT_Container_Group TEST DEMO - Second Push"
 #    description: "Template to  test Container Groups"

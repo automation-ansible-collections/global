@@ -8,33 +8,27 @@ controller_inventories:
     description: "Inventory Taken from excel file"
     organization: "{{ orgs }}"
 
-  - name: "SmartInventory  CPD BCN PRE"
-    description: "SmartInventory CPD BCN PRE"
-    host_filter: "groups__name=Patching_cpd_bcn and groups__name=Patching_os_entorno_pre and groups__name=Patching_os_vendor_redhat"
+  - name: "SmartInventory CPD BCN Org1"
+    description: "SmartInventory CPD BCN Org1"
+    host_filter: "groups__name=Patching_cpd_bcn and groups__name=Patching_os_entorno_{{ env }} and groups__name=Patching_os_vendor_redhat and groups__name=Patching_area_ts01"
     kind: smart
     organization: "{{ orgs }}"
 
-  - name: "SmartInventory  CPD BCN PRO"
-    description: "SmartInventory CPD BCN PRO"
-    host_filter: "groups__name=Patching_cpd_bcn and groups__name=Patching_os_entorno_pro and groups__name=Patching_os_vendor_redhat"
+  - name: "SmartInventory CPD MAD Org1"
+    description: "SmartInventory CPD MAD Org1"
+    host_filter: "groups__name=Patching_cpd_mad and groups__name=Patching_os_entorno_{{ env }} and groups__name=Patching_os_vendor_redhat and groups__name=Patching_area_ts01"
     kind: smart
     organization: "{{ orgs }}"
 
-  - name: "SmartInventory  CPD MAD PRE"
-    description: "SmartInventory CPD MAD PRE"
-    host_filter: "groups__name=Patching_cpd_mad and groups__name=Patching_os_entorno_pre and groups__name=Patching_os_vendor_redhat"
+  - name: "SmartInventory CPD BCN Org2"
+    description: "SmartInventory CPD BCN Org2"
+    host_filter: "groups__name=Patching_cpd_bcn and groups__name=Patching_os_entorno_{{ env }} and groups__name=Patching_os_vendor_redhat and groups__name=Patching_area_ts02"
     kind: smart
     organization: "{{ orgs }}"
 
-  - name: "SmartInventory  CPD MAD PRO"
-    description: "SmartInventory CPD MAD PRO"
-    host_filter: "groups__name=Patching_cpd_mad and groups__name=Patching_os_entorno_pro and groups__name=Patching_os_vendor_redhat"
+  - name: "SmartInventory CPD MAD Org2"
+    description: "SmartInventory CPD MAD Org2"
+    host_filter: "groups__name=Patching_cpd_mad and groups__name=Patching_os_entorno_{{ env }} and groups__name=Patching_os_vendor_redhat and groups__name=Patching_area_ts02"
     kind: smart
     organization: "{{ orgs }}"
-
-#  - name: "SmartInventory  CPD TS01 PRE CH0001"
-#    description: "SmartInventory CPD TS01"
-#    host_filter: "groups__name=Patching_area_ts01 and groups__name=Patching_os_entorno_pre and groups__name=Patching_os_vendor_redhat and groups_name=Patching_parcheo_ch_planif_ch00001"
-#    kind: smart
-
 ...
