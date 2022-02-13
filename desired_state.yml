@@ -14,4 +14,4 @@
 
   tasks:
     - import_role:
-        name: controller_casc_implementation
+        name: controller_casc_desired_state

@@ -15,3 +15,5 @@ if [ ${ORGANIZATION} == "Global" ]; then
 else
   ansible-playbook config-controller.yml --skip-tags organizations -e "{orgs: ${ORGANIZATION}, dir_orgs_vars: orgs_vars, env: ${ENVIRONMENT} }" --vault-password-file ./.vault_pass.txt -e @orgs_vars/env/${ENVIRONMENT}/configure_connection_controller_credentials.yml ${OTHER}
 fi
+
+#ansible-playbook config-controller.yml --tags organizations,credentials -e "{orgs: Global, dir_orgs_vars: orgs_vars, env: dev }" --vault-password-file ./.vault_pass.txt

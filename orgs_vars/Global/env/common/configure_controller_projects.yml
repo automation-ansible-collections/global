@@ -1,5 +1,5 @@
 ---
-configure_controller_projects:
+controller_projects:
   - name: "{{ orgs }} CasC_playbooks"
     description: "Project to run CasC"
     organization: "{{ orgs }}"

@@ -1,5 +1,5 @@
 ---
-configure_controller_inventories:
+controller_inventories:
   - name: "{{ orgs }} Localhost"
     description: "Inventory for the Localhost"
     organization: "{{ orgs }}"
@@ -12,21 +12,25 @@ configure_controller_inventories:
     description: "SmartInventory CPD BCN PRE"
     host_filter: "groups__name=Patching_cpd_bcn and groups__name=Patching_os_entorno_pre and groups__name=Patching_os_vendor_redhat"
     kind: smart
+    organization: "{{ orgs }}"
 
   - name: "SmartInventory  CPD BCN PRO"
     description: "SmartInventory CPD BCN PRO"
     host_filter: "groups__name=Patching_cpd_bcn and groups__name=Patching_os_entorno_pro and groups__name=Patching_os_vendor_redhat"
     kind: smart
+    organization: "{{ orgs }}"
 
   - name: "SmartInventory  CPD MAD PRE"
     description: "SmartInventory CPD MAD PRE"
     host_filter: "groups__name=Patching_cpd_mad and groups__name=Patching_os_entorno_pre and groups__name=Patching_os_vendor_redhat"
     kind: smart
+    organization: "{{ orgs }}"
 
   - name: "SmartInventory  CPD MAD PRO"
     description: "SmartInventory CPD MAD PRO"
     host_filter: "groups__name=Patching_cpd_mad and groups__name=Patching_os_entorno_pro and groups__name=Patching_os_vendor_redhat"
     kind: smart
+    organization: "{{ orgs }}"
 
 #  - name: "SmartInventory  CPD TS01 PRE CH0001"
 #    description: "SmartInventory CPD TS01"

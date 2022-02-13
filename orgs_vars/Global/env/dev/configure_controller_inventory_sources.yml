@@ -1,5 +1,5 @@
 ---
-configure_controller_inventory_source:
+controller_inventory_sources:
   - name: "INVENTORY_SOURCE_Excel"
     description: "Source Inventory from Excel file"
     source: scm

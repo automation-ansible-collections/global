@@ -1,4 +1,5 @@
 ---
 collections:
-  - casc.aap_controller
+  - redhat_cop.controller_casc
+  - redhat_cop.controller_configuration
 ...
