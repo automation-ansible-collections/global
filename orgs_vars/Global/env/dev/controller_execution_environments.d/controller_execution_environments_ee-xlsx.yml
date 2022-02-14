@@ -1,10 +1,5 @@
 ---
 controller_execution_environments:
-  - name: "ee-casc"
-    image: automationhub.bcnconsulting.com/ee-casc:latest
-    pull: always
-    credential: "{{ orgs }} {{ env }} Automation Private Hub Container Registry"
-
   - name: "ee-xlsx"
     image: automationhub.bcnconsulting.com/ee-xlsx:latest
     pull: always
