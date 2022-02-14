@@ -25,6 +25,19 @@ controller_projects:
     scm_update_cache_timeout: 86400
     allow_override: true
 
+  - name: "OrgReadOnly InventorySource XLSX"
+    description: "InventorySource XLSX"
+    organization: "OrgReadOnly"
+    scm_type: git
+    scm_branch: "change"
+    scm_url: "git@gitlab.bcnconsulting.com:aap-demo/inventario_ansible_xlsx.git"
+    scm_credential: "{{ orgs }} {{ env }} Gitlab Credential"
+    scm_clean: false
+    scm_delete_on_update: false
+    scm_update_on_launch: false
+    scm_update_cache_timeout: 86400
+    allow_override: true
+
   - name: "{{ orgs }} Container_Group"
     description: "Project to run Container_Groups example"
     organization: "{{ orgs }}"
