@@ -88,20 +88,20 @@ controller_roles:
     target_teams:
       - "Organization2 users-team"
 
-  - team: "team-all-ts-readonly"
+  - team: "ldap-users-readonly"
     job_templates:
       - "OrgReadOnly JT_ReadOnly_Playbooks"
     roles:
       - "execute"
 
-  - team: "team-ts01"
+  - team: "ldap-org01-users"
     inventories:
       - "SmartInventory CPD BCN Org1"
       - "SmartInventory CPD MAD Org1"
     roles:
       - "use"
 
-  - team: "team-ts02"
+  - team: "ldap-org01-users"
     inventories:
       - "SmartInventory CPD BCN Org2"
       - "SmartInventory CPD MAD Org2"
