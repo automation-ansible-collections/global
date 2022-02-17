@@ -1,5 +1,5 @@
 ---
-configure_controller_workflow_job_templates:
+controller_workflows:
   - name: "{{ orgs }} CasC_AAP_Workflow"
     description: "workflow for CasC on AAP"
     survey_enabled: false

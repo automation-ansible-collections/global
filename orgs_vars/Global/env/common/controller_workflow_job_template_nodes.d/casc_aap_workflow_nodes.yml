@@ -9,7 +9,8 @@ controller_workflow_nodes:
   - identifier: PROJECT_SYNC
     workflow: "{{ orgs }} CasC_AAP_Workflow"
     unified_job_template: "{{ orgs }} CasC_playbooks"
-    job_type: check
+    # WHAT SHOULD BE!?!?
+    # job_type: check
     organization: "{{ orgs }}"
     success_nodes:
       - LAUNCH_CI
