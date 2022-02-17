@@ -1,5 +1,5 @@
 ---
-configure_controller_schedules:
+controller_schedules:
   - name: "{{ orgs }} CasC_Ojbects_Cleanup"
     description: CasC_Ojbects_Cleanup
     unified_job_template: "{{ orgs }} CasC_JobTemplates_AAP_CI_Config_Controller"
