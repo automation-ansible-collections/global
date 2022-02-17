@@ -1,5 +1,5 @@
 ---
-nodes:
+controller_workflow_nodes:
   - identifier: LAUNCH_CI
     workflow: "{{ orgs }} CasC_AAP_Workflow"
     unified_job_template: "{{ orgs }} CasC_JobTemplates_AAP_CI_Webhook"
