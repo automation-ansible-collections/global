@@ -1,4 +1,5 @@
 ---
-- name: CUSTOM_LOGIN_INFO
-  value: "This is a custom message provided by Customer - Consulting Barcelona"
+controller_settings:
+  - name: CUSTOM_LOGIN_INFO
+    value: "This is a custom message provided by Customer - Consulting Barcelona"
 ...

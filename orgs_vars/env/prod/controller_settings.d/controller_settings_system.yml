@@ -1,14 +1,15 @@
 ---
-#- name: ACTIVITY_STREAM_ENABLED
-#  value: true
-#- name: ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC
-#  value: false
-#- name: SESSION_COOKIE_AGE
-#  value: 1800
-#- name: SESSIONS_PER_USER
-#  value: 10
-#- name: MANAGE_ORGANIZATION_AUTH
-#  value: true
-- name: ORG_ADMINS_CAN_SEE_ALL_USERS
-  value: false
+controller_settings:
+  #- name: ACTIVITY_STREAM_ENABLED
+  #  value: true
+  #- name: ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC
+  #  value: false
+  #- name: SESSION_COOKIE_AGE
+  #  value: 1800
+  #- name: SESSIONS_PER_USER
+  #  value: 10
+  #- name: MANAGE_ORGANIZATION_AUTH
+  #  value: true
+  - name: ORG_ADMINS_CAN_SEE_ALL_USERS
+    value: false
 ...
