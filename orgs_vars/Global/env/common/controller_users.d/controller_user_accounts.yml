@@ -9,10 +9,10 @@ controller_user_accounts:
           6163663536373538390a393763316538313133313363346466666264386334383638336133366465
           3130
   email: "admin@example.com"
-  first_name: "admin"
-  last_name: "admin"
-  auditor: False
-  superuser: True
+  firstname: "admin"
+  lastname: "admin"
+  is_auditor: False
+  is_superuser: True
   update_secrets: False
 
 - username: "adminorg1"
@@ -24,10 +24,10 @@ controller_user_accounts:
           6163663536373538390a393763316538313133313363346466666264386334383638336133366465
           3130
   email: "adminorg1@example.com"
-  first_name: "adminorg1"
-  last_name: "adminorg1"
-  auditor: False
-  superuser: False
+  firstname: "adminorg1"
+  lastname: "adminorg1"
+  is_auditor: False
+  is_superuser: False
 
 - username: "adminorg2"
   password: !vault |
@@ -38,10 +38,10 @@ controller_user_accounts:
           6163663536373538390a393763316538313133313363346466666264386334383638336133366465
           3130
   email: "adminorg2@example.com"
-  first_name: "adminorg2"
-  last_name: "adminorg2"
-  auditor: False
-  superuser: False
+  firstname: "adminorg2"
+  lastname: "adminorg2"
+  is_auditor: False
+  is_superuser: False
 
 - username: "userorg1"
   password: !vault |
@@ -52,7 +52,7 @@ controller_user_accounts:
           6163663536373538390a393763316538313133313363346466666264386334383638336133366465
           3130
   email: "userorg1@example.com"
-  superuser: False
+  is_superuser: False
 
 - username: "userorg2"
   password: !vault |
@@ -63,6 +63,5 @@ controller_user_accounts:
           6163663536373538390a393763316538313133313363346466666264386334383638336133366465
           3130
   email: "userorg2@example.com"
-  superuser: False
-
+  is_superuser: False
 ...
