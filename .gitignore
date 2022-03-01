@@ -5,6 +5,5 @@ configs
 controller_settings_ldap1.yml
 play_desired_state
 play_tests
-play_tests
 roles_old
 
