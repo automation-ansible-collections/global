@@ -12,6 +12,7 @@ controller_schedules:
       env: "{{ env }}"
       dir_orgs_vars: orgs_vars
       orgs: "{{ orgs }}"
+    organization: "{{ orgs }}"
 
   - name: "{{ orgs }} CasC_Ojbects_Creation"
     description: CasC_Ojbects_Cleanup
@@ -23,5 +24,6 @@ controller_schedules:
       env: "{{ env }}"
       dir_orgs_vars: orgs_vars
       orgs: "{{ orgs }}"
+    organization: "{{ orgs }}"
 
 ...

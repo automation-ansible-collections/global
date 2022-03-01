@@ -27,4 +27,5 @@ controller_templates:
     execution_environment: "Default execution environment"
     instance_groups:
       - Container_Groups_Instance
+
 ...
