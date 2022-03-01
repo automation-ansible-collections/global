@@ -39,6 +39,27 @@ controller_templates:
       ansible_async_dir: /home/runner/.ansible_async/
     execution_environment: "ee-casc"
 
+ - name: "{{ orgs }} CasC_JobTemplates_AAP_Desired_State"
+   description: "Template to assure Desired State"
+   organization: "{{ orgs }}"
+   project: "{{ orgs }} CasC_playbooks"
+   inventory: "{{ orgs }} Localhost"
+   playbook: "desired-state.yml"
+   job_type: run
+   fact_caching_enabled: false
+   credentials:
+     - "{{ orgs }} {{ env }} aap_credentials"
+     - "{{ orgs }} {{ env }} aap_vault_credentials"
+   concurrent_jobs_enabled: true
+   ask_scm_branch_on_launch: true
+   ask_tags_on_launch: true
+   ask_verbosity_on_launch: true
+   ask_variables_on_launch: true
+   extra_vars:
+     ansible_python_interpreter: /usr/bin/python3
+     ansible_async_dir: /home/runner/.ansible_async/
+   execution_environment: "ee-casc"
+
   - name: "OrgReadOnly JT_ReadOnly_Playbooks"
     description: "Template to execute readonly playbooks"
     organization: "OrgReadOnly"
