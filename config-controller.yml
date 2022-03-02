@@ -2,11 +2,6 @@
 - hosts: localhost
   connection: local
   gather_facts: false
-  #vars:
-  #  controller_validate_certs: false
-  #  controller_hostname: https://aapstdalone.bcnconsulting.com
-  #  controller_username: admin
-  #  controller_password: redhat00
   collections:
     - ansible.controller
     - redhat_cop.controller_configuration
