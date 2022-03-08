@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  collections:
+    - redhat_cop.controller_casc
+  roles:
+    - controller_casc_from_aap
+...
