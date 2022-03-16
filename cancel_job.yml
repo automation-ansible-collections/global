@@ -1,0 +1,9 @@
+---
+- name: "Cancel Jobs"
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  collections:
+    - redhat_cop.controller_configuration
+  roles:
+     - redhat_cop.controller_configuration.jobs_cancel
