@@ -14,7 +14,6 @@ controller_templates:
     instance_groups:
       - Container_Groups_Instance
 
-
   - name: "{{ orgs }} JT_Container_Group TEST DEMO - Second Push"
     description: "Template to  test Container Groups"
     organization: "{{ orgs }}"
