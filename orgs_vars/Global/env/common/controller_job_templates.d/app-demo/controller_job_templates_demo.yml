@@ -41,7 +41,7 @@ controller_templates:
         variable: target_hosts
         min: 0
         max: 1024
-        default: infra-ansible-tower-testing.infra.sat.rdu2.redhat.com
+        default: Localhost
         choices: ''
         new_question: true
 ...
