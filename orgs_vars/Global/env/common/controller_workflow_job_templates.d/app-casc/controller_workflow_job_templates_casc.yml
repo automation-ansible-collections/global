@@ -1,0 +1,11 @@
+---
+controller_workflows:
+  - name: "{{ orgs }} CasC_AAP_Workflow"
+    description: "workflow for CasC on AAP"
+    survey_enabled: false
+    ask_variables_on_launch: true
+    allow_simultaneous: true
+    scm_branch: "{{ env }}"
+    webhook_service: "gitlab"
+    organization: "{{ orgs }}"
+...

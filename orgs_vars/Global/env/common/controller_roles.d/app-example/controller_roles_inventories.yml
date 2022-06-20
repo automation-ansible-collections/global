@@ -1,0 +1,18 @@
+---
+controller_roles:
+  - inventory: InventaryExcel
+    user: userorg1
+    role: read
+
+  - team: "ldap-org01-users"
+    inventories:
+      - "SmartInventory CPD BCN Org1"
+      - "SmartInventory CPD MAD Org1"
+    role: use
+
+  - team: "ldap-org02-users"
+    inventories:
+      - "SmartInventory CPD BCN Org2"
+      - "SmartInventory CPD MAD Org2"
+    role: use
+...

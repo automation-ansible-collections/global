@@ -1,0 +1,21 @@
+---
+controller_templates:
+  - name: "OrgReadOnly JT_ReadOnly_Playbooks"
+    description: "Template to execute readonly playbooks"
+    organization: "OrgReadOnly"
+    project: "OrgReadOnly ReadOnly_Playbooks"
+    playbook: "readonly-playbooks.yml"
+    job_type: run
+    fact_caching_enabled: false
+    credentials:
+      - "OrgReadOnly {{ env }} machine_ansible_user_credentials"
+    concurrent_jobs_enabled: true
+    ask_inventory_on_launch: true
+    ask_credential_on_launch: true
+    ask_limit_on_launch: true
+    ask_verbosity_on_launch: true
+    extra_vars:
+      ansible_python_interpreter: /usr/bin/python3
+      ansible_async_dir: /home/runner/.ansible_async/
+    execution_environment: "ee-casc"
+...

@@ -1,22 +1,3 @@
 ---
-controller_inventory_sources:
-  - name: "INVENTORY_SOURCE_Excel"
-    description: "Source Inventory from Excel file"
-    source: scm
-    source_project: "Global InventorySource XLSX"
-    execution_environment: ee-xlsx
-    source_path: "xlsx_inventory.py"
-    inventory: "InventaryExcel"
-    update_on_launch: false
-    overwrite: true
-
-  - name: "OrgReadOnly INVENTORY_SOURCE_Excel"
-    description: "Source Inventory from Excel file"
-    source: scm
-    source_project: "OrgReadOnly InventorySource XLSX"
-    execution_environment: ee-xlsx
-    source_path: "xlsx_inventory.py"
-    inventory: "InventaryExcel"
-    update_on_launch: false
-    overwrite: true
+controller_inventory_sources: []
 ...

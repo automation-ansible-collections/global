@@ -1,6 +1,3 @@
 ---
-controller_hosts:
-  - name: localhost
-    description: localhost
-    inventory: "{{ orgs }} Localhost"
+controller_hosts: []
 ...
