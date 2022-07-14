@@ -1,5 +1,6 @@
 ---
 collections:
-  - redhat_cop.controller_casc
-  - redhat_cop.controller_configuration
+  - name: redhat_cop.controller_casc
+    version: '>= 0.0.150'
+  - name: redhat_cop.controller_configuration
 ...
