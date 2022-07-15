@@ -5,13 +5,6 @@ controller_organizations:
   - name: "Organization2"
     description: "Organization 2 to tests"
     galaxy_credentials: "{{ common_galaxy_credentials }}"
-  - name: "Organization3"
-    description: "Organization 3 to tests"
-    galaxy_credentials: "{{ common_galaxy_credentials }}"
-
 common_galaxy_credentials:
   - "Ansible Galaxy"
-  - "{{ orgs }} {{ env }} Automation Hub Community Repository"
-  - "{{ orgs }} {{ env }} Automation Hub Published Repository"
-  - "{{ orgs }} {{ env }} Automation Hub RH Certified Repository"
 ...

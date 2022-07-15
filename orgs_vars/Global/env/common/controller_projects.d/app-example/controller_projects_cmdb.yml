@@ -1,8 +1,8 @@
 ---
 controller_projects:
-  - name: "InventorySource XLSX CMDB"
+  - name: "Global InventorySource XLSX CMDB"
     description: "InventorySource XLSX"
-    organization: "OrgReadOnly"
+    organization: "{{ orgs }}"
     scm_type: git
     scm_branch: "cmb"
     scm_url: "git@gitlab.bcnconsulting.com:aap-demo/inventario_ansible_xlsx.git"
