@@ -1,7 +1,0 @@
----
-controller_roles:
-  - job_templates:
-      - "OrgReadOnly JT_ReadOnly_Playbooks"
-    team: "ldap-users-readonly"
-    role: execute
-...

@@ -1,14 +1,14 @@
 ---
 controller_templates:
-  - name: "OrgReadOnly JT_ReadOnly_Playbooks"
-    description: "Template to execute readonly playbooks"
-    organization: "OrgReadOnly"
-    project: "OrgReadOnly ReadOnly_Playbooks"
+  - name: "OrgCrossTeams JT_Gather_Facts"
+    description: "Template to execute gather facts playbooks shared by teams"
+    organization: "OrgCrossTeams"
+    project: "OrgCrossTeams Playbooks"
     playbook: "readonly-playbooks.yml"
     job_type: run
     fact_caching_enabled: false
-    credentials:
-      - "OrgReadOnly {{ env }} machine_ansible_user_credentials"
+    #credentials:
+    #  - "OrgCrossTeams {{ env }} machine_ansible_user_credentials"
     concurrent_jobs_enabled: true
     ask_inventory_on_launch: true
     ask_credential_on_launch: true
