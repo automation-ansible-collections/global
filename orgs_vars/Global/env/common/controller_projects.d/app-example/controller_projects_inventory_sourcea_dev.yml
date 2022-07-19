@@ -1,9 +1,10 @@
 ---
 controller_projects:
-  - name: "{{ orgs }} InventorySource XLSX"
-    description: "InventorySource XLSX"
+  - name: "{{ orgs }} InventorySource SourceA dev"
+    description: "InventorySource SourceA dev from XLSX"
     organization: "{{ orgs }}"
     scm_type: git
+    scm_branch: "sourcea-dev"
     scm_url: "git@gitlab.bcnconsulting.com:aap-demo/inventario_ansible_xlsx.git"
     scm_credential: "{{ orgs }} {{ env }} Gitlab Credential"
     scm_clean: false

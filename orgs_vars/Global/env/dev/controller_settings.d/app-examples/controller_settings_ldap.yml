@@ -69,6 +69,11 @@ controller_settings:
     "users": "cn=team-ldap-controller-admins,cn=groups,cn=accounts,dc=bcnconsulting,dc=com",
     "remove": true
   },
+  "ldap-users-cmdb": {
+    "organization": "Global",
+    "users": "cn=team-ldap-cmdb-admins,cn=groups,cn=accounts,dc=bcnconsulting,dc=com",
+    "remove": true
+  },
   "ldap-users-crossteam": {
     "organization": "CrossTeamOrg",
     "users": "cn=team-ldap-users-crossteam,cn=groups,cn=accounts,dc=bcnconsulting,dc=com",

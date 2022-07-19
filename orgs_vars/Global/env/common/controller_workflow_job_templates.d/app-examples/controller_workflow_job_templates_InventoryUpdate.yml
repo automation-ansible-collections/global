@@ -1,0 +1,10 @@
+---
+controller_workflows:
+  - name: "{{ orgs }} WF_INVENTORY_SOURCE_UPDATE"
+    description: "workflow for update the sources of the inventory"
+    survey_enabled: false
+    ask_variables_on_launch: true
+    allow_simultaneous: true
+    scm_branch: "{{ env }}"
+    organization: "{{ orgs }}"
+...

@@ -1,21 +1,21 @@
 ---
-controller_templates:
-  - name: "OrgCrossTeams JT_Gather_Facts"
-    description: "Template to execute gather facts playbooks shared by teams"
-    organization: "OrgCrossTeams"
-    project: "OrgCrossTeams Playbooks"
-    playbook: "readonly-playbooks.yml"
-    job_type: run
-    fact_caching_enabled: false
-    #credentials:
-    #  - "OrgCrossTeams {{ env }} machine_ansible_user_credentials"
-    concurrent_jobs_enabled: true
-    ask_inventory_on_launch: true
-    ask_credential_on_launch: true
-    ask_limit_on_launch: true
-    ask_verbosity_on_launch: true
-    extra_vars:
-      ansible_python_interpreter: /usr/bin/python3
-      ansible_async_dir: /home/runner/.ansible_async/
-    execution_environment: "ee-casc"
+controller_templates: []
+#  - name: "OrgCrossTeams JT_Gather_Facts"
+#    description: "Template to execute gather facts playbooks shared by teams"
+#    organization: "OrgCrossTeams"
+#    project: "OrgCrossTeams Playbooks"
+#    playbook: "readonly-playbooks.yml"
+#    job_type: run
+#    fact_caching_enabled: false
+#    #credentials:
+#    #  - "OrgCrossTeams {{ env }} machine_ansible_user_credentials"
+#    concurrent_jobs_enabled: true
+#    ask_inventory_on_launch: true
+#    ask_credential_on_launch: true
+#    ask_limit_on_launch: true
+#    ask_verbosity_on_launch: true
+#    extra_vars:
+#      ansible_python_interpreter: /usr/bin/python3
+#      ansible_async_dir: /home/runner/.ansible_async/
+#    execution_environment: "ee-casc"
 ...
