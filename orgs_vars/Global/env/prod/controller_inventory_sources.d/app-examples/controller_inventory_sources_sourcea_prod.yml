@@ -1,9 +1,9 @@
 ---
 controller_inventory_sources:
-  - name: "OrgReadOnly INVENTORY_SOURCE_Excel"
-    description: "Source Inventory from Excel file"
+  - name: "Inventory Source A Prod"
+    description: "Source Inventory from Excel file SourceA prod"
     source: scm
-    source_project: "OrgReadOnly InventorySource XLSX"
+    source_project: "{{ orgs }} InventorySource SourceA prod"
     execution_environment: ee-xlsx
     source_path: "xlsx_inventory.py"
     inventory: "InventaryExcel"

@@ -1,9 +1,9 @@
 ---
 controller_inventory_sources:
-  - name: "INVENTORY_SOURCE_CMDB"
-    description: "Source Inventory from Excel file - emulate CMDB"
+  - name: "Inventory Source B Prod"
+    description: "Source Inventory from Excel file SourceB prod"
     source: scm
-    source_project: "InventorySource XLSX CMDB"
+    source_project: "{{ orgs }} InventorySource SourceB prod"
     execution_environment: ee-xlsx
     source_path: "xlsx_inventory.py"
     inventory: "InventaryExcel"
