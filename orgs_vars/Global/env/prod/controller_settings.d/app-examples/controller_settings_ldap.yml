@@ -44,7 +44,8 @@ controller_settings:
                 "cn=team-ldap-org01-admins,cn=groups,cn=accounts,dc=bcnconsulting,dc=com"
             ],
             "users": [
-                "cn=team-ldap-org01-users,cn=groups,cn=accounts,dc=bcnconsulting,dc=com"
+                "cn=team-ldap-org01-users,cn=groups,cn=accounts,dc=bcnconsulting,dc=com",
+                "cn=team-ldap-org01-devs,cn=groups,cn=accounts,dc=bcnconsulting,dc=com"
             ],
             "remove_users": true,
             "remove_admins": true
@@ -54,7 +55,8 @@ controller_settings:
                 "cn=team-ldap-org02-admins,cn=groups,cn=accounts,dc=bcnconsulting,dc=com"
             ],
             "users": [
-                "cn=team-ldap-org02-users,cn=groups,cn=accounts,dc=bcnconsulting,dc=com"
+                "cn=team-ldap-org02-users,cn=groups,cn=accounts,dc=bcnconsulting,dc=com",
+                "cn=team-ldap-org02-devs,cn=groups,cn=accounts,dc=bcnconsulting,dc=com"
             ],
             "remove_users": true,
             "remove_admins": true
@@ -67,9 +69,14 @@ controller_settings:
     "users": "cn=team-ldap-controller-admins,cn=groups,cn=accounts,dc=bcnconsulting,dc=com",
     "remove": true
   },
-  "ldap-users-readonly": {
-    "organization": "OrgReadOnly",
-    "users": "cn=team-ldap-users-readonly,cn=groups,cn=accounts,dc=bcnconsulting,dc=com",
+  "ldap-users-cmdb": {
+    "organization": "Global",
+    "users": "cn=team-ldap-cmdb-admins,cn=groups,cn=accounts,dc=bcnconsulting,dc=com",
+    "remove": true
+  },
+  "ldap-users-crossteam": {
+    "organization": "CrossTeamOrg",
+    "users": "cn=team-ldap-users-crossteam,cn=groups,cn=accounts,dc=bcnconsulting,dc=com",
     "remove": true
   },
   "ldap-org01-admins": {
@@ -78,8 +85,13 @@ controller_settings:
     "remove": true
   },
   "ldap-org01-users": {
-    "organization": "Organization2",
+    "organization": "Organization1",
     "users": "cn=team-ldap-org01-users,cn=groups,cn=accounts,dc=bcnconsulting,dc=com",
+    "remove": true
+  },
+  "ldap-org01-devs": {
+    "organization": "Organization1",
+    "users": "cn=team-ldap-org01-devs,cn=groups,cn=accounts,dc=bcnconsulting,dc=com",
     "remove": true
   },
   "ldap-org02-admins": {
@@ -90,6 +102,11 @@ controller_settings:
   "ldap-org02-users": {
     "organization": "Organization2",
     "users": "cn=team-ldap-org02-users,cn=groups,cn=accounts,dc=bcnconsulting,dc=com",
+    "remove": true
+  },
+  "ldap-org02-devs": {
+    "organization": "Organization2",
+    "users": "cn=team-ldap-org02-devs,cn=groups,cn=accounts,dc=bcnconsulting,dc=com",
     "remove": true
   }
 }

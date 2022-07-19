@@ -1,7 +1,0 @@
----
-controller_roles: []
-#  - job_templates:
-#      - "OrgCrossTeams JT_Gather_Facts"
-#    team: "ldap-users-crossteam"
-#    role: execute
-...
