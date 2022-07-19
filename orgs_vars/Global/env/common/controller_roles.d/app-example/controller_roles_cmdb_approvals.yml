@@ -1,0 +1,7 @@
+---
+controller_roles:
+  - workflows:
+      - "WF_INVENTORY_UPDATE"
+    team: "ldap-users-cmdb"
+    role: approval
+...
