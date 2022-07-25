@@ -10,6 +10,12 @@ controller_roles:
       - "SmartInventory CPD MAD Org1 dev"
     role: use
 
+  - team: "ldap-org01-devs"
+    inventories:
+      - "SmartInventory CPD BCN Org1 dev"
+      - "SmartInventory CPD MAD Org1 dev"
+    role: use
+
   - team: "ldap-org01-admins"
     inventories:
       - "Global Localhost"
@@ -20,6 +26,12 @@ controller_roles:
     role: use
 
   - team: "ldap-org02-users"
+    inventories:
+      - "SmartInventory CPD BCN Org2 dev"
+      - "SmartInventory CPD MAD Org2 dev"
+    role: use
+
+  - team: "ldap-org02-devs"
     inventories:
       - "SmartInventory CPD BCN Org2 dev"
       - "SmartInventory CPD MAD Org2 dev"
