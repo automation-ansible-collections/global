@@ -10,6 +10,9 @@ controller_settings:
   #  value: 10
   #- name: MANAGE_ORGANIZATION_AUTH
   #  value: true
+  #  https://access.redhat.com/solutions/6613291 -  External users are not able to create token on Ansible Tower.
+  - name: ALLOW_OAUTH2_FOR_EXTERNAL_USERS
+    value: true
   - name: ORG_ADMINS_CAN_SEE_ALL_USERS
     value: false
 ...
