@@ -3,7 +3,7 @@ controller_templates:
   - name: "{{ orgs }} CasC_JobTemplates_AAP_CI_Webhook"
     description: "Template to attend AAP CasC webhook"
     organization: "{{ orgs }}"
-    project: "{{ orgs }} CasC_playbooks"
+    project: "{{ orgs }} CasC_Data"
     inventory: "{{ orgs }} Localhost"
     playbook: "config-controller.yml"
     job_tags: ci_webhook_trigger
@@ -21,7 +21,7 @@ controller_templates:
   - name: "{{ orgs }} CasC_JobTemplates_AAP_CI_Config_Controller"
     description: "Template to deploy AAP Orgs"
     organization: "{{ orgs }}"
-    project: "{{ orgs }} CasC_playbooks"
+    project: "{{ orgs }} CasC_Data"
     inventory: "{{ orgs }} Localhost"
     playbook: "config-controller.yml"
     job_type: run
@@ -42,7 +42,7 @@ controller_templates:
   - name: "{{ orgs }} CasC_JobTemplates_AAP_Desired_State"
     description: "Template to assure Desired State"
     organization: "{{ orgs }}"
-    project: "{{ orgs }} CasC_playbooks"
+    project: "{{ orgs }} CasC_Data"
     inventory: "{{ orgs }} Localhost"
     playbook: "desired-state.yml"
     job_type: run
