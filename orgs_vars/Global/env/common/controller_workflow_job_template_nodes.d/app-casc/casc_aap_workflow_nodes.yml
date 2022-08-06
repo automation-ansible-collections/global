@@ -8,7 +8,7 @@ controller_workflow_nodes:
 
   - identifier: PROJECT_SYNC
     workflow_job_template: "{{ orgs }} CasC_AAP_Workflow"
-    unified_job_template: "{{ orgs }} CasC_playbooks"
+    unified_job_template: "{{ orgs }} CasC_Data"
     # WHAT SHOULD BE!?!?
     # job_type: check
     organization: "{{ orgs }}"

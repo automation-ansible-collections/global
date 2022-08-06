@@ -1,7 +1,7 @@
 ---
 controller_projects:
-  - name: "{{ orgs }} CasC_playbooks"
-    description: "Project to run CasC"
+  - name: "{{ orgs }} CasC_Data"
+    description: "Project to include the vars values of the {{ orgs }} Org"
     organization: "{{ orgs }}"
     scm_type: git
     scm_url: "git@gitlab.bcnconsulting.com:aap-demo/global.git"
