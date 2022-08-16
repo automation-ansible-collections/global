@@ -15,7 +15,7 @@
     controller_password: redhat00
     controller_execution_environments:
       - name: "My EE"
-        image: automationhub.bcnconsulting.com/ee-casc
+        image: demo-hub1-dev.bcnconsulting.com/ee-casc
         pull: always
         credential: "Automation Hub Container Registry User"
         #credential: "Automation Hub Container Registry"

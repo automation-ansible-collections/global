@@ -5,6 +5,5 @@
   collections:
     - ansible.controller
     - redhat_cop.controller_configuration
-    - redhat_cop.controller_casc
   roles:
-    - controller_casc_implementation
+    - casc_implementation
