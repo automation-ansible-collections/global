@@ -75,7 +75,7 @@ controller_settings:
     "remove": true
   },
   "ldap-users-crossteam": {
-    "organization": "CrossTeamOrg",
+    "organization": "OrgCrossTeams",
     "users": "cn=team-ldap-users-crossteam,cn=groups,cn=accounts,dc=bcnconsulting,dc=com",
     "remove": true
   },
