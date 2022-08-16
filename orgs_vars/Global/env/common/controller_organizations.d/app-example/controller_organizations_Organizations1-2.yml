@@ -1,7 +1,7 @@
 controller_organizations:
   - name: "Organization1"
     description: "Organization 1 to tests"
-    instance_groups: Container_Groups_Instance
+    #instance_groups: Container_Groups_Instance
 #   galaxy_credentials: "{{ common_galaxy_credentials }}"
   - name: "Organization2"
     description: "Organization 2 to tests"
