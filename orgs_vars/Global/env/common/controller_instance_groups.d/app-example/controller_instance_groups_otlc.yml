@@ -1,5 +1,5 @@
 ---
-configure_controller_instance_groups:
+controller_instance_groups:
   - name: Container_Groups_Instance
     is_container_group: true
     credential: "{{ orgs }} {{ env }} OCP_OPENTLC"
