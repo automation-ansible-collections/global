@@ -2,9 +2,9 @@
 - hosts: localhost
   connection: local
   gather_facts: false
-  collections:
-    - ansible.controller
-    - redhat_cop.controller_configuration
+  #collections:
+  #  - ansible.controller
+  #  - redhat_cop.controller_configuration
   vars:
     controller_configuration_projects_async_retries: 60
     controller_configuration_projects_async_delay: 2
@@ -38,19 +38,19 @@
       tags:
         - always
   roles:
-    - {role: filetree_read, assign_galaxy_credentials_to_org: false}
-    - {role: dispatch, assign_galaxy_credentials_to_org: false}
+    - {role: redhat_cop.controller_configuration.filetree_read, assign_galaxy_credentials_to_org: false}
+    - {role: redhat_cop.controller_configuration.dispatch, assign_galaxy_credentials_to_org: false}
 
   post_tasks:
     - block:
         - name: Include Tasks to load Galaxy credentials to be added to Organizations
           ansible.builtin.include_role:
-            name: filetree_read
+            name: redhat_cop.controller_configuration.filetree_read
             tasks_from: organizations.yml
 
         - name: Include Tasks to add Galaxy credentials to Organizations
           ansible.builtin.include_role:
-            name: dispatch
+            name: redhat_cop.controller_configuration.dispatch
             apply:
               tags:
                 - organizations
