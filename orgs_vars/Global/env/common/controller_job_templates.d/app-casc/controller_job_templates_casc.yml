@@ -18,12 +18,12 @@ controller_templates:
       ansible_async_dir: /home/runner/.ansible_async/
     execution_environment: "ee-casc"
 
-  - name: "{{ orgs }} CasC_JobTemplates_AAP_CI_Config_Controller"
+  - name: "{{ orgs }} CasC_JobTemplates_AAP_CD_Config_Controller"
     description: "Template to deploy AAP Orgs"
     organization: "{{ orgs }}"
     project: "{{ orgs }} CasC_Data"
     inventory: "{{ orgs }} Localhost"
-    playbook: "config-controller.yml"
+    playbook: "cd-gitlab-webhook-trigger.yml"
     job_type: run
     fact_caching_enabled: false
     credentials:
@@ -39,12 +39,12 @@ controller_templates:
       ansible_async_dir: /home/runner/.ansible_async/
     execution_environment: "ee-casc"
 
-  - name: "{{ orgs }} CasC_JobTemplates_AAP_Desired_State"
-    description: "Template to assure Desired State"
+  - name: "{{ orgs }} CasC_JobTemplates_AAP_Drop_Diff"
+    description: "Template to assure Drop Object Diff"
     organization: "{{ orgs }}"
     project: "{{ orgs }} CasC_Data"
     inventory: "{{ orgs }} Localhost"
-    playbook: "desired-state.yml"
+    playbook: "drop_diff.yml"
     job_type: run
     fact_caching_enabled: false
     credentials:

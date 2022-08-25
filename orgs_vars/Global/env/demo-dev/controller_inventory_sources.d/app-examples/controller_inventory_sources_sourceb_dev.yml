@@ -9,4 +9,5 @@ controller_inventory_sources:
     inventory: "InventaryExcel"
     update_on_launch: false
     overwrite: true
+    organization: "{{ orgs }}"
 ...
