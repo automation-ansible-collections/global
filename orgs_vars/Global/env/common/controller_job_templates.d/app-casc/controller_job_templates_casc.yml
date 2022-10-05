@@ -6,7 +6,6 @@ controller_templates:
     project: "{{ orgs }} CasC_Data"
     inventory: "{{ orgs }} Localhost"
     playbook: "cd-gitlab-webhook-trigger.yml"
-    job_tags: ci_webhook_trigger
     job_type: run
     fact_caching_enabled: false
     credentials:
